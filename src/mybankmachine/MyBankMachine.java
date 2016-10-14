@@ -200,6 +200,8 @@ public class MyBankMachine extends javax.swing.JFrame {
         String daysString = inputField.getText();
         try {
             int days = Integer.parseInt(daysString);
+            myBank.applyInterest(days);
+            updateLog("Successfully added interest.");
         } catch(NumberFormatException nfe) {
             try {
                 Double.parseDouble(daysString);

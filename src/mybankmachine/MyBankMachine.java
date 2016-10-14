@@ -17,7 +17,7 @@ import java.util.Scanner;
  */
 public class MyBankMachine extends javax.swing.JFrame {
 
-    String INVALID_INPUT_MESSAGE = "Unable to deposit. Please enter a number only.";
+    String INVALID_INPUT_MESSAGE = "Please enter a number only.";
     
     ATM myBank;
     
@@ -197,7 +197,19 @@ public class MyBankMachine extends javax.swing.JFrame {
     }
     
     private void applyInterestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyInterestButtonActionPerformed
-        
+        String daysString = inputField.getText();
+        try {
+            int days = Integer.parseInt(daysString);
+        } catch(NumberFormatException nfe) {
+            try {
+                Double.parseDouble(daysString);
+                System.err.println("Unable to calculate interest. Please enter a whole number.");
+                updateLog("Unable to calculate interest. Please enter a whole number.");
+            } catch (NumberFormatException nfe2) {
+                System.err.println("Unable to calculate interest. " + INVALID_INPUT_MESSAGE);
+                updateLog("Unable to calculate interest. " + INVALID_INPUT_MESSAGE);
+            }
+        }
         
         inputField.setText("");
     }//GEN-LAST:event_applyInterestButtonActionPerformed

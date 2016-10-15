@@ -12,7 +12,8 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * "Having a bank account" simulator 2K16.
+ * This class runs the program and is the form. 
+ * {@literal <meme>} "Having a bank account" simulator 2K16. {@literal </meme>}
  * @author DaTho7561
  */
 public class MyBankMachine extends javax.swing.JFrame {
@@ -24,8 +25,8 @@ public class MyBankMachine extends javax.swing.JFrame {
     ATM myBank;
     
     /**
-     * Creates new form MyBankMachine and sets up variables for use with the ATM. <br />
-     * <b> pre: </b> none <br />
+     * Creates new form MyBankMachine and sets up variables for use with the ATM. <p>
+     * <b> pre: </b> none <p>
      * <b> post: </b> Form MyBankMachine set up, along with its required variables
      */
     public MyBankMachine() {
@@ -39,6 +40,7 @@ public class MyBankMachine extends javax.swing.JFrame {
         try {
             System.out.print("Please enter your initial balance: ");
             balance = sc.nextDouble();
+            if (balance < 0) System.err.println("Negative balance. Creating empty bank account");
             sc.nextLine();
             myBank = new ATM(balance, bankName);
         } catch (Exception e) {
@@ -202,8 +204,8 @@ public class MyBankMachine extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Updates the log with a timestamp and the give <code> String</code>. <br />
-     * <b> pre: </b> none <br />
+     * Updates the log with a timestamp and the give <code> String</code>. <p>
+     * <b> pre: </b> none <p>
      * <b> post: </b> Log updated with given string and timestamp.
      * @param information The <code> String</code> used in the log entry
      */
@@ -214,8 +216,8 @@ public class MyBankMachine extends javax.swing.JFrame {
     }
     
     /**
-     * Applies the interest when the corresponding button is pressed. <br />
-     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <br />
+     * Applies the interest when the corresponding button is pressed. <p>
+     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <p>
      * <b> post: </b> Interest applied.
      * @param evt Not used.
      */
@@ -257,8 +259,8 @@ public class MyBankMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_interestFieldActionPerformed
 
     /**
-     * Deposits money when the corresponding button is pressed. <br />
-     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <br />
+     * Deposits money when the corresponding button is pressed. <p>
+     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <p>
      * <b> post: </b> Money deposited.
      * @param evt Not used.
      */
@@ -276,8 +278,8 @@ public class MyBankMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_depositButtonActionPerformed
 
     /**
-     * Withdraws money when the corresponding button is pressed. <br />
-     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <br />
+     * Withdraws money when the corresponding button is pressed. <p>
+     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <p>
      * <b> post: </b> Money withdrawn.
      * @param evt Not used.
      */
@@ -294,7 +296,7 @@ public class MyBankMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_withdrawButtonActionPerformed
 
     /**
-     * Posts the current balance to the log. <br />
+     * Posts the current balance to the log. <p>
      * <b> pre: </b> none
      * <b> post: </b> Current balance posted to log.
      * @param evt Not used.
@@ -304,8 +306,8 @@ public class MyBankMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_getBalanceButtonActionPerformed
 
     /**
-     * Changes the interest rate when the corresponding button is pressed. <br />
-     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <br />
+     * Changes the interest rate when the corresponding button is pressed. <p>
+     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <p>
      * <b> post: </b> Interest rate changed.
      * @param evt Not used.
      */
@@ -314,9 +316,9 @@ public class MyBankMachine extends javax.swing.JFrame {
         
         try {
             double newInterestRate = Double.parseDouble(newInterestRateString);
-            if (newInterestRate > 1) {
+            if (newInterestRate >= 1 || newInterestRate <= 0) {
                 System.err.println("Please input a decimal interest rate (below 1).");
-                updateLog("Please input a decimal interest rate (below 1).");
+                updateLog("Please input a decimal interest rate (between 1 and 0 exclusive).");
             } else {
                 myBank.setInterestRate(newInterestRate);
                 updateLog("New interest rate set.");
@@ -330,8 +332,8 @@ public class MyBankMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_applyRateButtonActionPerformed
 
     /**
-     * Sets up everything related to the application.
-     * <b> pre: </p> Nothing. The program hasn't started yet. <br />
+     * Sets up everything related to the application. <p>
+     * <b> pre: </b> Nothing. The program hasn't started yet. <p>
      * <b> post: </b> Program has started.
      * @param args the command line arguments
      */

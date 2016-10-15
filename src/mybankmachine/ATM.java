@@ -19,10 +19,10 @@ public class ATM {
     private double yearlyInterest;
     
     /**
-     * Creates a new ATM with the specified balance, bank name, and yearly interest. <br />
+     * Creates a new ATM with the specified balance, bank name, and yearly interest. <p>
      * <b> pre: </b> <code> accountBalance </code> is 0 or greater, otherwise it
      * will be set to 0. <code> yearlyInterest </code> must be between 0 and 1,
-     * otherwise, it will be set to the default value.<br />
+     * otherwise, it will be set to the default value.<p>
      * <b> post: </b> A new ATM is created.
      * @param accountBalance The initial amount of money the account has.
      * @param nameOfBank The name of the bank this ATM represents.
@@ -36,9 +36,9 @@ public class ATM {
     
     /**
      * Creates a new ATM with the specified balance and bank name.
-     * Has the default interest of 1.5% <br />
-     * <b> pre: </b> accountBalance is 0 or greater, otherwise it will be set to 0. <br />
-     * <b> post: </b> A new ATM is created. <br />
+     * Has the default interest of 1.5% <p>
+     * <b> pre: </b> accountBalance is 0 or greater, otherwise it will be set to 0. <p>
+     * <b> post: </b> A new ATM is created. <p>
      * @param accountBalance The initial amount of money the account has.
      * @param nameOfBank The name of the bank this ATM represents.
      */    
@@ -47,8 +47,8 @@ public class ATM {
     }
     
     /**
-     * Creates a new ATM with the specified bank name. <br />
-     * <b> pre: </b> none <br />
+     * Creates a new ATM with the specified bank name. <p>
+     * <b> pre: </b> none <p>
      * <b> post: </b> New ATM created.
      * @param nameOfBank The name of the bank this ATM represents.
      */    
@@ -57,17 +57,17 @@ public class ATM {
     }
     
     /**
-     * Creates a new ATM with a balance of zero, default interest rate, and a blank bank name. <br />
-     * <b> pre: </b> none <br />
-     * <b> post: </b> new ATM created <br />
+     * Creates a new ATM with a balance of zero, default interest rate, and a blank bank name. <p>
+     * <b> pre: </b> none <p>
+     * <b> post: </b> new ATM created <p>
      */
     public ATM() {
         this("");
     }
     
     /**
-     * Deposits the specified amount of money into the ATM. <br />
-     * <b> pre: </b> amount must be positive <br />
+     * Deposits the specified amount of money into the ATM. <p>
+     * <b> pre: </b> amount must be positive <p>
      * <b> post: </b> amount is deposited
      * @param amount a positive amount to be deposited
      */
@@ -81,9 +81,9 @@ public class ATM {
     
     /**
      * Withdraws the specified amount of money from the ATM if doing so doesn't
-     * make the balance negative. <br />
+     * make the balance negative. <p>
      * <b> pre: </b> <code>amount</code> is a positive number that is less than or equal
-     * to the balance. <br />
+     * to the balance. <p>
      * <b> post: </b> The ATM's balance is adjusted accordingly, and a <code>String</code>
      * is returned representing the success of the withdrawal.
      * @param amount The amount of money to withdraw. This must be positive.
@@ -104,9 +104,9 @@ public class ATM {
     }
     
     /**
-     * Applies interest given the number of days and the annual interest rate. <br />
+     * Applies interest given the number of days and the annual interest rate. <p>
      * <b> pre: </b> <code>days</code> is a positive integer, and <code>annualInterestRate</code>
-     * is a decimal number<br />
+     * is a decimal number<p>
      * <b> post: </b> Interest rate is applied
      * @param days The number of days of interest to apply
      * @param annualInterestRate the annual interest rate, as a decimal
@@ -130,9 +130,9 @@ public class ATM {
     }
     
     /**
-     * Applies interest given the number of days. <br />
+     * Applies interest given the number of days. <p>
      * <b> pre: </b> <code>days</code> is a positive integer, and <code>annualInterestRate</code>
-     * is a decimal number.<br />
+     * is a decimal number.<p>
      * <b> post: </b> Interest rate is applied
      * @param days Number of days of interest to apply.
      */
@@ -141,8 +141,8 @@ public class ATM {
     }
     
     /**
-     * Sets a new yearly interest rate value for this ATM. <br />
-     * <b> pre: </b> The <code>newRate</code> is between 0 and 1. <br />
+     * Sets a new yearly interest rate value for this ATM. <p>
+     * <b> pre: </b> The <code>newRate</code> is between 0 and 1. <p>
      * <b> post: </b> The interest rate of this ATM is changed.
      * @param newRate A decimal interest rate between 0 and 1 exclusively
      */
@@ -151,8 +151,8 @@ public class ATM {
     }
     
     /**
-     * Returns the balance of this bank account. <br />
-     * <b> pre: </b> none <br />
+     * Returns the balance of this bank account. <p>
+     * <b> pre: </b> none <p>
      * <b> post: </b> Balance is returned
      * @return This ATM's <code>balance</code>
      */
@@ -161,8 +161,8 @@ public class ATM {
     }
 
     /**
-     * Returns this ATM's interest rate. <br />
-     * <b> pre: </b> none <br />
+     * Returns this ATM's interest rate. <p>
+     * <b> pre: </b> none <p>
      * <b> post: </b> interest rate returned.
      * @return this ATM's interest rate
      */

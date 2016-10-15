@@ -12,17 +12,21 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- *
+ * "Having a bank account" simulator 2K16.
  * @author DaTho7561
  */
 public class MyBankMachine extends javax.swing.JFrame {
 
+    // Used occaisionally to make code look tidier
     String INVALID_INPUT_MESSAGE = "Please enter a number only.";
     
+    // The ATM used by the form application
     ATM myBank;
     
     /**
-     * Creates new form MyBankMachine
+     * Creates new form MyBankMachine and sets up variables for use with the ATM. <br />
+     * <b> pre: </b> none <br />
+     * <b> post: </b> Form MyBankMachine set up, along with its required variables
      */
     public MyBankMachine() {
         Scanner sc = new Scanner(System.in);
@@ -43,6 +47,8 @@ public class MyBankMachine extends javax.swing.JFrame {
         }
         
         initComponents();
+        
+        interestField.setText(myBank.getInterestRate() + "");
     }
 
     /**
@@ -195,18 +201,37 @@ public class MyBankMachine extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Updates the log with a timestamp and the give <code> String</code>. <br />
+     * <b> pre: </b> none <br />
+     * <b> post: </b> Log updated with given string and timestamp.
+     * @param information The <code> String</code> used in the log entry
+     */
     public void updateLog(String information) {
         Date d = new Date();
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm");
         logTextArea.setText(logTextArea.getText() + "[" + df.format(d) + "] " + information + "\n");
     }
     
+    /**
+     * Applies the interest when the corresponding button is pressed. <br />
+     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <br />
+     * <b> post: </b> Interest applied.
+     * @param evt Not used.
+     */
     private void applyInterestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyInterestButtonActionPerformed
+        
         String daysString = inputField.getText();
         try {
             int days = Integer.parseInt(daysString);
-            myBank.applyInterest(days);
-            updateLog("Successfully added interest.");
+            if (days > 0) {
+                myBank.applyInterest(days);
+                updateLog("Successfully added interest.");
+            } else {
+                System.err.println("Please enter a positive day number.");
+                updateLog("Please enter a positive day number.");
+            }
+            
         } catch(NumberFormatException nfe) {
             try {
                 Double.parseDouble(daysString);
@@ -221,12 +246,22 @@ public class MyBankMachine extends javax.swing.JFrame {
         inputField.setText("");
     }//GEN-LAST:event_applyInterestButtonActionPerformed
 
+    
+    /**
+     * Does nothing, but I can't remove it, since it was auto-generated.
+     * @deprecated
+     * @param evt 
+     */
     private void interestFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_interestFieldActionPerformed
-        
-        
-        inputField.setText("");
+        // Does nothing
     }//GEN-LAST:event_interestFieldActionPerformed
 
+    /**
+     * Deposits money when the corresponding button is pressed. <br />
+     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <br />
+     * <b> post: </b> Money deposited.
+     * @param evt Not used.
+     */
     private void depositButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButtonActionPerformed
         try {
             double amountToDeposit = Integer.parseInt(inputField.getText());
@@ -240,6 +275,12 @@ public class MyBankMachine extends javax.swing.JFrame {
         inputField.setText("");
     }//GEN-LAST:event_depositButtonActionPerformed
 
+    /**
+     * Withdraws money when the corresponding button is pressed. <br />
+     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <br />
+     * <b> post: </b> Money withdrawn.
+     * @param evt Not used.
+     */
     private void withdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawButtonActionPerformed
         try {
             double amountToWithdraw = Integer.parseInt(inputField.getText());
@@ -252,28 +293,46 @@ public class MyBankMachine extends javax.swing.JFrame {
         inputField.setText("");
     }//GEN-LAST:event_withdrawButtonActionPerformed
 
+    /**
+     * Posts the current balance to the log. <br />
+     * <b> pre: </b> none
+     * <b> post: </b> Current balance posted to log.
+     * @param evt Not used.
+     */
     private void getBalanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBalanceButtonActionPerformed
         updateLog("Current balance is $" + myBank.getBalance());
     }//GEN-LAST:event_getBalanceButtonActionPerformed
 
+    /**
+     * Changes the interest rate when the corresponding button is pressed. <br />
+     * <b> pre: </b> none. All errors are handled by the method or the ATM object. <br />
+     * <b> post: </b> Interest rate changed.
+     * @param evt Not used.
+     */
     private void applyRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyRateButtonActionPerformed
         String newInterestRateString = interestField.getText();
         
         try {
-            double newInterestRate = Integer.parseInt(newInterestRateString);
+            double newInterestRate = Double.parseDouble(newInterestRateString);
             if (newInterestRate > 1) {
                 System.err.println("Please input a decimal interest rate (below 1).");
                 updateLog("Please input a decimal interest rate (below 1).");
             } else {
-                myBank
+                myBank.setInterestRate(newInterestRate);
+                updateLog("New interest rate set.");
             }
         } catch(NumberFormatException nfe){
             System.err.println(INVALID_INPUT_MESSAGE);
             updateLog(INVALID_INPUT_MESSAGE);
         }
+        
+        interestField.setText(myBank.getInterestRate() + "");
     }//GEN-LAST:event_applyRateButtonActionPerformed
 
     /**
+     * Sets up everything related to the application.
+     * <b> pre: </p> Nothing. The program hasn't started yet. <br />
+     * <b> post: </b> Program has started.
      * @param args the command line arguments
      */
     public static void main(String args[]) {

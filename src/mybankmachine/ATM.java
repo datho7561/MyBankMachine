@@ -159,6 +159,16 @@ public class ATM {
     public double getBalance() {
         return balance;
     }
+
+    /**
+     * Returns this ATM's interest rate. <br />
+     * <b> pre: </b> none <br />
+     * <b> post: </b> interest rate returned.
+     * @return this ATM's interest rate
+     */
+    public double getInterestRate() {
+        return yearlyInterest;
+    }
     
     
 }

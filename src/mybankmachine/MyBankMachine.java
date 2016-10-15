@@ -113,8 +113,13 @@ public class MyBankMachine extends javax.swing.JFrame {
         });
 
         applyRateButton.setText("Apply new Rate");
+        applyRateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyRateButtonActionPerformed(evt);
+            }
+        });
 
-        getBalanceButton.setText("Get Balance");
+        getBalanceButton.setText("Print Balance");
         getBalanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getBalanceButtonActionPerformed(evt);
@@ -250,6 +255,23 @@ public class MyBankMachine extends javax.swing.JFrame {
     private void getBalanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBalanceButtonActionPerformed
         updateLog("Current balance is $" + myBank.getBalance());
     }//GEN-LAST:event_getBalanceButtonActionPerformed
+
+    private void applyRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyRateButtonActionPerformed
+        String newInterestRateString = interestField.getText();
+        
+        try {
+            double newInterestRate = Integer.parseInt(newInterestRateString);
+            if (newInterestRate > 1) {
+                System.err.println("Please input a decimal interest rate (below 1).");
+                updateLog("Please input a decimal interest rate (below 1).");
+            } else {
+                myBank
+            }
+        } catch(NumberFormatException nfe){
+            System.err.println(INVALID_INPUT_MESSAGE);
+            updateLog(INVALID_INPUT_MESSAGE);
+        }
+    }//GEN-LAST:event_applyRateButtonActionPerformed
 
     /**
      * @param args the command line arguments

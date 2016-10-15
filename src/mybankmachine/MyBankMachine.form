@@ -180,10 +180,13 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Apply new Rate"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="applyRateButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="getBalanceButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Get Balance"/>
+        <Property name="text" type="java.lang.String" value="Print Balance"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getBalanceButtonActionPerformed"/>
